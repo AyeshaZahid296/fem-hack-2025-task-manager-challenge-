@@ -1,17 +1,17 @@
-// src/components/AddTaskModal.jsx
-
 import React, { useState } from 'react';
 
 const AddTaskModal = ({ isOpen, onClose, onAdd }) => {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
+    const [assignedTo, setAssignedTo] = useState('');
 
     const handleSubmit = (e) => {
         e.preventDefault();
         if (title.trim() && description.trim()) {
-            onAdd({ title, description });
+            onAdd({ title, description, assignedTo });  // Pass assignedTo along with title and description
             setTitle('');
             setDescription('');
+            setAssignedTo('');
             onClose();
         }
     };
@@ -25,25 +25,32 @@ const AddTaskModal = ({ isOpen, onClose, onAdd }) => {
                 <form onSubmit={handleSubmit} className="flex flex-col gap-4">
                     <input
                         type="text"
-                        placeholder="Title"
+                        placeholder="Task Title"
                         className="p-2 border rounded-lg"
                         value={title}
                         onChange={(e) => setTitle(e.target.value)}
-                        required
                     />
                     <textarea
-                        placeholder="Description"
+                        placeholder="Task Description"
                         className="p-2 border rounded-lg"
                         value={description}
                         onChange={(e) => setDescription(e.target.value)}
-                        required
-                    ></textarea>
-                    <div className="flex justify-end gap-2">
-                        <button type="button" onClick={onClose} className="bg-gray-300 text-gray-700 py-1 px-4 rounded-lg">
-                            Cancel
-                        </button>
-                        <button type="submit" className="bg-blue-500 text-white py-1 px-4 rounded-lg">
-                            Add
+                    />
+                    <input
+                        type="text"
+                        placeholder="Assigned To"
+                        className="p-2 border rounded-lg"
+                        value={assignedTo}
+                        onChange={(e) => setAssignedTo(e.target.value)}
+                    />
+                    <div className="flex justify-between">
+                        <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded-lg">Add Task</button>
+                        <button
+                            type="button"
+                            onClick={onClose}
+                            className="bg-red-500 text-white px-4 py-2 rounded-lg"
+                        >
+                            Close
                         </button>
                     </div>
                 </form>

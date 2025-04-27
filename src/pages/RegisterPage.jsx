@@ -3,14 +3,14 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth, db } from "../firebase";
 import { setDoc, doc } from "firebase/firestore";
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom"; // 👈 ADD THIS
+import { useNavigate } from "react-router-dom";
 
 const RegisterPage = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [fname, setFname] = useState("");
     const [lname, setLname] = useState("");
-    const navigate = useNavigate(); // 👈 ADD THIS
+    const navigate = useNavigate();
 
     const handleRegister = async (e) => {
         e.preventDefault();
@@ -23,11 +23,12 @@ const RegisterPage = () => {
                     email: user.email,
                     firstName: fname,
                     lastName: lname,
-                    photo: "",
+                    role: "user", // Default role for users
                 });
             }
+
             toast.success("User Registered Successfully", { position: "top-center" });
-            navigate("/login"); // 👈 CORRECT WAY
+            navigate("/home"); // Redirect to Home page after registration
         } catch (error) {
             toast.error(error.message, { position: "bottom-center" });
         }
@@ -38,8 +39,7 @@ const RegisterPage = () => {
             <div className="w-full max-w-sm bg-white p-8 rounded-lg shadow-lg">
                 <h3 className="text-2xl font-semibold text-center mb-6">Register</h3>
                 <form onSubmit={handleRegister}>
-                    {/* FORM FIELDS */}
-                    {/* SAME AS YOURS */}
+                    {/* Form Fields for email, password, first name, last name */}
                 </form>
             </div>
         </div>
