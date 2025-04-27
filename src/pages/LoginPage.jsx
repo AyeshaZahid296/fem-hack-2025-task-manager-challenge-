@@ -15,7 +15,7 @@ const LoginPage = () => {
         try {
             await signInWithEmailAndPassword(auth, email, password);
             console.log("User logged in Successfully");
-            toast.success("User logged in Successfully!", { position: "top-center" }); // Success toast
+            toast.success("User logged in Successfully!", { position: "top-center" });
             navigate("/home"); // Redirect to homepage after login
         } catch (error) {
             toast.error(error.message, { position: "bottom-center" });
@@ -58,6 +58,19 @@ const LoginPage = () => {
                         </button>
                     </div>
                 </form>
+
+                <div className="text-center mt-4">
+                    <p className="text-sm text-gray-600">
+                        Don't have an account?{" "}
+                        <span
+                            className="text-blue-500 cursor-pointer"
+                            onClick={() => navigate("/register")} // Navigate to register page
+                        >
+                            Register
+                        </span>
+                    </p>
+                </div>
+
                 <SignInWithGoogle />
             </div>
         </div>

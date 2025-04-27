@@ -40,6 +40,59 @@ const RegisterPage = () => {
                 <h3 className="text-2xl font-semibold text-center mb-6">Register</h3>
                 <form onSubmit={handleRegister}>
                     {/* Form Fields for email, password, first name, last name */}
+                    <div className="mb-4">
+                        <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email address</label>
+                        <input
+                            type="email"
+                            id="email"
+                            className="w-full p-3 mt-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            placeholder="Enter email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            required
+                        />
+                    </div>
+                    <div className="mb-4">
+                        <label htmlFor="fname" className="block text-sm font-medium text-gray-700">First Name</label>
+                        <input
+                            type="text"
+                            id="fname"
+                            className="w-full p-3 mt-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            placeholder="Enter first name"
+                            value={fname}
+                            onChange={(e) => setFname(e.target.value)}
+                            required
+                        />
+                    </div>
+                    <div className="mb-4">
+                        <label htmlFor="lname" className="block text-sm font-medium text-gray-700">Last Name</label>
+                        <input
+                            type="text"
+                            id="lname"
+                            className="w-full p-3 mt-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            placeholder="Enter last name"
+                            value={lname}
+                            onChange={(e) => setLname(e.target.value)}
+                            required
+                        />
+                    </div>
+                    <div className="mb-6">
+                        <label htmlFor="password" className="block text-sm font-medium text-gray-700">Password</label>
+                        <input
+                            type="password"
+                            id="password"
+                            className="w-full p-3 mt-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            placeholder="Enter password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            required
+                        />
+                    </div>
+                    <div className="mb-4">
+                        <button type="submit" className="w-full p-3 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none transition duration-300 ease-in-out">
+                            Register
+                        </button>
+                    </div>
                 </form>
             </div>
         </div>
